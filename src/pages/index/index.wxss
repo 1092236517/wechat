@@ -1,0 +1,60 @@
+@import "assets/wxss/img-right.wxss";
+@import "assets/wxss/img-bottom.wxss";
+@import "assets/wxss/video-right.wxss";
+@import "assets/wxss/video-bottom.wxss";
+
+/*  顶部TabList  */
+.withAnimate {
+  transition: all 200ms ease-out;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  -ms-perspective: 1000;
+  perspective: 1000;
+}
+
+.tab-bar {
+  position: fixed;
+  white-space: nowrap;
+  display: block;
+  font-size: 10pt;
+  color: #000000;
+  height: 40px;
+  background-color: #eeeeee;
+  z-index:100;
+}
+
+.tab-bar .tab {
+  display: inline-block;
+  line-height: 40px;
+  text-align: center;
+}
+
+.tab-bar .tab-active {
+  color: #f84709;
+}
+
+.tab-bar .under-line {
+  position: absolute;
+  height: 4px;
+  top: 36px;
+  background-color: #f84709;
+}
+
+/* 新闻框 */
+.movie-content-wrapper{
+    padding-top: 40px;
+}
+
+.view-item {
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px #eeeeee solid;
+}

@@ -1,0 +1,68 @@
+/* 左文字右图片排列方式 */
+.view-item .view-item-video-right {
+  display: flex;
+  flex-direction: row;
+  height: 180rpx;
+  width: 100%;
+  padding: 20rpx 20rpx;
+}
+
+/* 新闻框左边 */
+.view-item .view-item-video-right .item-left {
+  display: flex;
+  flex-direction: column;
+  font-size: 34rpx;
+  height: 100%;
+  width: 52%;
+}
+
+.view-item .view-item-video-right .item-left .item-left-text {
+  height: 52%;
+  display: block;
+  overflow: hidden;
+}
+.view-item .view-item-video-right .item-left .item-left-bottom {
+  display: flex;
+  flex-direction: row;
+  margin-top: 12%;
+  font-size: 24rpx;
+}
+
+.view-item .view-item-video-right .item-left .item-left-bottom .item-left-bottom-tag {
+  height: 34rpx;
+  line-height: 34rpx;
+  width: 75rpx;
+  border: 2rpx #f84709 solid;
+  border-radius: 10rpx;
+  text-align: center;
+  color: #f84709;
+  margin-right: 20rpx;
+}
+
+.view-item .view-item-video-right .item-left .item-left-bottom .item-left-bottom-comment {
+  color: #999999;
+  padding-top: 2rpx;
+}
+
+/* 新闻框右边 */
+.view-item .view-item-video-right .item-right{
+  margin-left: 10rpx;
+  height: 100%;
+  width: 40%;
+  position: relative;
+}
+
+.view-item .view-item-video-right .item-right image {
+    width: 100%; 
+    height: 100%; 
+}
+
+.view-item .view-item-video-right .item-right .video-play-btn{
+  position: absolute;
+  top: 30%;
+  right:40%;
+  width:20%;
+  height: 10rpx;
+  cursor: pointer;
+  z-index: 9999;
+}

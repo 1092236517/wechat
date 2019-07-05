@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/authorize/authorize",
+    "pages/video/index",
+    "pages/textdetail/index",
+    "pages/heat/index",
+    "pages/user/index",
+    "pages/collect/index",
+    "pages/comment/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#f84709",
+    "navigationBarTitleText": "筑牛资讯",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#fff",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#f84709",
+    "backgroundColor": "#eeeeee",
+    "borderStyle": "white",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "resources/images/tarbar-homepage.png",
+        "selectedIconPath": "resources/images/tarbar-homepage-selected.png"
+      },
+      {
+        "pagePath": "pages/heat/index",
+        "text": "热点",
+        "iconPath": "resources/images/tarbar-barrage.png",
+        "selectedIconPath": "resources/images/tarbar-barrage-selected.png"
+      },
+      {
+        "pagePath": "pages/user/index",
+        "text": "我的",
+        "iconPath": "resources/images/tarbar-people.png",
+        "selectedIconPath": "resources/images/tarbar-people-selected.png"
+      }
+    ]
+  },
+  "debug": false,
+  "networkTimeout": {
+    "request": 60000,
+    "downloadFile": 10000
+  },
+  "sitemapLocation": "sitemap.json"
+}

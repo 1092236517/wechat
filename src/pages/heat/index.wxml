@@ -1,0 +1,120 @@
+<!--index.wxml-->
+<view style='box-sizing:border-box'>
+  <!--  顶部TabList  -->
+  <!-- <scroll-view class="tab-bar" scroll-x="true" style="width: 100%;" scroll-left="{{tab_config.tab_left}}">
+    <view wx:for="{{tab_config.tabs}}" wx:key="index" wx:item="item" data-index="{{index}}" bindtap="handlerTabTap" class="tab {{tab_config.active_tab==index?'tab-active':''}} " style="width: {{tab_config.item_width}}px;">
+      <text>{{item.name}}</text>
+    </view>
+    <view style="width: {{tab_config.item_width-tab_config.underline.margins}}px; left: {{tab_config.underline.offset+10}}px;" class="under-line withAnimate"></view>
+  </scroll-view> -->
+
+  <!-- 新闻主体 -->
+   <!-- <view class="movie-content-wrapper" style='width:{{window_width}}px'> -->
+    <!--  滑动页面  -->
+    <!-- <swiper current='{{swipe_config.current}}' bindchange='bindChange' style="height: {{ swipe_config.height }}rpx;"> -->
+      <!-- <view wx:for="{{news_list}}" wx:for-item="list" wx:key="list-index"> -->
+        <!-- <scroll-view scroll-y="true"> -->
+          <!-- 新闻 -->
+          <block wx:if="{{!showdefaultimg}}">
+          <view class="view-item" wx:for="{{news_list}}" wx:for-item="news" wx:key="news-index" bindtap='bindshowdetailTap' data-new='{{news}}'>
+            <!-- 图片右显示 -->
+            <block wx:if="{{news.cover_type=='single'&&news.text_type=='text'}}">
+              <view class="view-item-img-right">
+                <view class="item-left">
+                    <view class="item-left-text">{{news.title}}</view>
+                    <view class="item-left-bottom">
+                        <view class="item-left-bottom-tag" wx:for="{{news.tags}}" wx:for-item="tag" wx:key="tag-index">
+                          {{tag}}
+                        </view>
+                        <view class="item-left-bottom-comment">
+                          {{news.comment_num || 0}} 评论
+                        </view>
+                    </view>
+                </view>
+                <view class="item-right">
+                    <image src="{{news.cover_img}}" mode="scaleToFill"></image>
+                </view>
+              </view>
+            </block>
+
+            <!-- 图片下显示 -->
+            <block wx:if="{{news.cover_type=='multiple'&&news.text_type=='text'}}">
+                <view class="view-item-img-bottom">
+                    <view class="item-top">
+                      <text>{{news.title}}</text>
+                    </view>
+                    <view class="item-middle">
+                      <view class="item-middle-img" wx:for="{{news.cover_img}}" wx:for-item="img" wx:key="img-index">
+                          <image src="{{img}}" mode="scaleToFill"></image>
+                      </view>
+                    </view>
+                    <view class="item-bottom">
+                      <view class="item-bottom-tag" wx:for="{{news.tags}}" wx:for-item="tag" wx:key="tag-index">
+                        {{tag}}
+                      </view>
+                      <view class="item-bottom-comment">
+                        {{news.comment_num || 0}} 评论
+                      </view>
+                    </view>
+                </view>
+            </block>
+
+            <!-- 视频右显示-->
+            <block wx:if="{{news.cover_type=='single'&&news.text_type=='video'}}">
+                <view class="view-item-video-right">
+                  <view class="item-left">
+                      <view class="item-left-text">
+                      {{news.title}}
+                      </view>
+                      <view class="item-left-bottom">
+                          <view class="item-left-bottom-tag" wx:for="{{news.tags}}" wx:for-item="tag" wx:key="tag-index">
+                            {{tag}}
+                          </view>
+                          <view class="item-left-bottom-comment">
+                            {{news.comment_num || 0}} 评论
+                          </view>
+                      </view>
+                  </view>
+                  <view class="item-right">
+                      <!-- <image src="{{news.cover_img}}" mode="scaleToFill"></image> -->
+                      <!-- <video wx:if="{{news.id == playIndex}}" id='video{{news.id}}' src='https://apd-f580b9462e6672be35c3823861b42e14.v.smtcdns.com/vhot2.qqvideo.tc.qq.com/A5-leHZlMzKWTSvIdhqxJTmH-dc6nDRAT0236oOQSKDc/p03883viatl.p712.1.mp4?sdtfrom=v1010&guid=24b4fd56c7451d55b03d57c90e1779d6&vkey=764A1598E07AD13828402EF930E26AEC5DAE1BDAABCAE1A432D74D22ABCB9B2066F2DD387736C5E080024FE05D1ADDE58E4EA020D918ABBE66EB1530F66381F0289CB712807C43A2F142166E0C96FE4A09F473BB09935B199749A259A040BE97A2EA22CA1985797BA458790C59DBFCFDC06F04A2C0BF786D' autoplay='{{true}}' show-center-play-btn="{{false}}" controls="true" style='width:100%;height:100%'></video> -->
+                      <image src="{{news.cover_img}}" mode="scaleToFill"></image><!--wx:if="{{news.id!=playIndex}}" -->
+                      <!-- <image class='video-play-btn' wx:if='{{news.id!=playIndex}}' mode='widthFix' data-index='{{news.id}}' catchtap='videoPlay' src='../../resources/images/tarbar-live.png'></image> -->
+                  </view>
+                </view>
+            </block>
+
+            <!-- 视频下显示 -->
+            <block wx:if="{{news.cover_type=='multiple'&&news.text_type=='video'}}">
+                <view class="view-item-video-bottom">
+                  <view class="item-top">
+                      <text>{{news.title}}</text>
+                    </view>
+                    <view class="item-middle">
+                      <view class="item-middle-video" wx:for="{{news.cover_img}}" wx:for-item="img" wx:key="img-index">
+                          <image src="{{img}}" mode="scaleToFill"></image>
+                      </view>
+                    </view>
+                    <view class="item-bottom">
+                      <view class="item-bottom-tag" wx:for="{{news.tags}}" wx:for-item="tag" wx:key="tag-index">
+                        {{tag}}
+                      </view>
+                      <view class="item-bottom-comment">
+                        {{news.comment_num || 0}} 评论
+                      </view>
+                    </view>
+                </view>
+            </block>
+          </view>
+          </block>
+
+          <block wx:else>
+          <view style='margin:0 auto;height:500rpx;width:70%;box-sizing:border-box;margin-top:200rpx;'>
+            <image src="../../resources/images/nodatabg.png" style='height:100%;width:100%;'></image>
+          </view>
+          </block>
+        <!-- </scroll-view> -->
+      <!-- </view> -->
+    <!-- </swiper> -->
+  <!-- </view> -->
+</view>

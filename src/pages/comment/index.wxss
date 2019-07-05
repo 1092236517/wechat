@@ -1,0 +1,36 @@
+@import "../index/assets/wxss/img-right.wxss";
+@import "../index/assets/wxss/img-bottom.wxss";
+@import "../index/assets/wxss/video-right.wxss";
+@import "../index/assets/wxss/video-bottom.wxss";
+
+.title{
+  position: fixed;
+  white-space: nowrap;
+  display: block;
+  font-size: 10pt;
+  color: #000000;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  background-color: #eeeeee;
+  z-index:100;
+  width: 100%;
+}
+.movie-content-wrapper{
+    padding-top: 40px;
+}
+.view-item {
+  width: 100%;
+  height: 100%;
+  border-bottom: 5px #f4f4f4 solid;
+}
+
+.view-item-bottom{
+  display: flex;
+  align-items: row;
+  justify-content: space-around;
+  padding-bottom: 8px;
+}
+.view-item-bottom text{
+  font-size: 16px;
+}

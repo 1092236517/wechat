@@ -1,0 +1,119 @@
+<import src="../../wxParse/wxParse.wxml"/> 
+<view class='container'>
+  <view wx:if="{{text_type == 'video'}}" style='margin:10rpx'>
+    <video src='{{videoUrl}}' id='myvideo' autoplay='false' show-center-play-btn="true" controls="true" style='width:100%;height:400rpx'></video>
+  </view>
+  
+  <view class='titlestyle'>{{title}}</view>
+  <view class='head'>
+    <view class='headphoto'>
+      <image src="../../resources/images/zhuniu-logo.png"></image>
+      <view>
+        <view class='headname'>筑牛君</view>
+        <view class='headtime'>{{creat_at}}</view>
+      </view>
+    </view>
+    <view class='fontsizebtn'>
+      <button bindtap='bindaddfontTap'>A+</button>
+      <button bindtap='bindreducefontTap'>A-</button>
+    </view>
+  </view>
+  <view class='wordtext' style='font-size:{{fSize}}px'>
+    <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+  </view>
+  <!-- <web-view class='wordtext' style='font-size:{{fSize}}px'>
+    {{content}}
+  </web-view> -->
+
+  <view class='adcard'>
+    <view class='adphoto'>
+      <image src="{{cover_img}}"></image>
+    </view>
+    <view class='adtext'>
+      <view class='titlestyle'>{{title}}</view>
+      <view class='tipstyle'>{{tips}}</view>
+    </view>
+  </view>
+
+  <view class='commentcard'>
+    <view class='commenttitle'>热门评论</view>
+      <view wx:for="{{commentList}}" wx:key="index" wx:item="item" >
+        <view class='commentitem' bindtap='docomment' data-item='{{item}}'>
+          <view class='commentphoto'>
+            <image wx:if="{{item.user_id==10086}}" src="../../resources/images/zhuniu-logo.png"></image>
+            <image wx:else src="{{item.user.photo}}"></image>
+          </view>
+          <view class='commentinfo'>
+            <view class='headname'>
+              <view wx:if="{{item.user_id==10086}}">筑牛君</view>
+              <view wx:else>{{item.user.name}}</view>
+              <view catchtap='commentvote' data-id='{{item.id}}'>
+                <icon class='iconfont icon-praise'></icon>
+                <text>{{item.vote_num||0}}</text>
+              </view>
+            </view>
+            <view class='commentcont'>
+              <view wx:if="{{item.parent}}">回复@
+                <text wx:if="{{item.parent.user_id==10086}}" style="color: rgb(12,107,206);">筑牛君</text>
+                <text wx:else style="color: rgb(12,107,206);">{{item.parent.user.name}}</text>
+                ：{{item.comment}}
+              </view>
+              <text wx:else>{{item.comment}}</text>
+            </view>
+            <view class='time'>{{item.created_at}}</view>
+          </view>
+        </view>
+        <!-- <view wx:if="{{item.child}}.length!=0" wx:for="{{item.child}}" wx:key="firstindex" wx:for-item="firstitem">
+          <view class='commentitem firstchild'  bindtap='docomment' data-item='{{firstitem}}'>
+            <view class='commentphoto'>
+              <image wx:if="{{firstitem.user.id==10086}}" src="../../resources/images/zhuniu-logo.png"></image>
+              <image wx:else src="{{firstitem.user.photo}}"></image>
+            </view>
+            <view class='commentinfo'>
+              <view class='headname'>
+                <view wx:if="{{firstitem.user.id==10086}}">筑牛君</view>
+                <view wx:else>{{firstitem.user.name}}</view>
+                <view bindtap='commentvote' data-id='{{firstitem.id}}'>
+                  <icon class='iconfont icon-praise'></icon>
+                  <text>{{firstitem.vote_num||0}}</text>
+                </view>
+              </view>
+              <view class='commentcont'>
+              <text>{{firstitem.comment}}</text>
+              </view>
+              <view class='time'>{{firstitem.created_at}}</view>
+            </view>
+          </view>
+        </view> -->
+        
+      </view>
+      
+  </view>
+
+  <view>
+    <view></view>
+  </view>
+
+
+  <view class='menubar'>
+    <input type='text' placeholder='{{inputplace}}' value='{{inputvlaue}}' confirm-type='send' bindinput="bindKeyInput" cursor-spacing="10" focus='{{inputfocus}}'/>
+    <button style='background-color:#f84709' type='primary' bindtap='sendbtn'>发送</button>
+    
+    <view class='iconfont icon-shoucang-moren collect' wx:if="{{!iscollect}}" bindtap='collect'></view>
+    <view class="iconfont icon-shoucang- collect" wx:else bindtap='collect'></view>
+    <button class='iconfont icon-share quickPublishBtn' open-type='share'></button>
+    <view class='iconfont icon-pengyouquan' bindtap='sharepyq'></view>
+  </view>
+
+  
+<!-- 画布大小按需定制 这里我按照背景图尺寸的一半定的  -->
+<canvas canvas-id="shareImg" style="width:375px;height:606px"></canvas>
+  
+<!-- 预览区域  -->
+<view hidden='{{previewHidden}}' class='preview' catchtouchmove='stopPageScroll'>
+  <image src='{{preurl}}' mode='widthFix' class='previewImg'></image>
+  <button type='primary' bindtap='save'>保存分享图</button>
+</view>
+  
+
+</view>

@@ -1,0 +1,120 @@
+<view>
+
+<view class='title'>我的收藏</view>
+<view class='movie-content-wrapper'>
+<view class="view-item" wx:for="{{list}}" wx:for-item="news" wx:key="news-index" bindtap='bindshowdetailTap' data-new='{{news}}'>
+            <!-- 图片右显示 -->
+            <block wx:if="{{news.news.cover_type=='single'&&news.news.text_type=='text'}}">
+              <view class="view-item-img-right">
+                <view class="item-left">
+                    <view class="item-left-text">
+                    {{news.news.title}}
+                    </view>
+                    <!-- <view class="item-left-bottom">
+                        <view class="item-left-bottom-tag" wx:for="{{news.news.tags}}" wx:for-item="tag" wx:key="tag-index">
+                          {{tag}}
+                        </view>
+                        <view class="item-left-bottom-comment">
+                          {{news.news.comment_num || 0}} 评论
+                        </view>
+                    </view> -->
+                </view>
+                <view class="item-right">
+                    <image src="{{news.news.cover_img}}" mode="scaleToFill"></image>
+                </view>
+              </view>
+              <view class='view-item-bottom'>
+                <view class='iconfont icon-fenxiang'></view>
+                <view class='iconfont icon-praise' catchtap='voteNews' data-new='{{news}}'><text>{{news.news.vote_num||0}}</text></view>
+                <view class='iconfont icon-message'><text>{{news.news.comment_num||0}}</text></view>
+                <view class='iconfont icon-shanchu' catchtap='deletenews' data-new='{{news}}'></view>
+              </view>
+            </block>
+
+            <!-- 图片下显示 -->
+            <block wx:if="{{news.news.cover_type=='IMG_BOTTOM'&&news.news.text_type=='text'}}">
+                <view class="view-item-img-bottom">
+                    <view class="item-top">
+                      <text>{{news.news.title}}</text>
+                    </view>
+                    <view class="item-middle">
+                      <view class="item-middle-img" wx:for="{{news.news.cover_img}}" wx:for-item="img" wx:key="img-index">
+                          <image src="{{img}}" mode="scaleToFill"></image>
+                      </view>
+                    </view>
+                    <!-- <view class="item-bottom">
+                      <view class="item-bottom-tag" wx:for="{{news.news.tags}}" wx:for-item="tag" wx:key="tag-index">
+                        {{tag}}
+                      </view>
+                      <view class="item-bottom-comment">
+                        {{news.news.comment_num || 0}} 评论
+                      </view>
+                    </view> -->
+                </view>
+                <view class='view-item-bottom'>
+                  <view class='iconfont icon-fenxiang'></view>
+                  <view class='iconfont icon-praise'><text>{{news.news.vote_num||0}}</text></view>
+                  <view class='iconfont icon-message'><text>{{news.news.comment_num||0}}</text></view>
+                </view>
+            </block>
+
+            <!-- 视频右显示-->
+            <block wx:if="{{news.news.cover_type=='single'&&news.news.text_type=='video'}}">
+                <view class="view-item-video-right">
+                  <view class="item-left">
+                      <view class="item-left-text">
+                      {{news.news.title}}
+                      </view>
+                      <!-- <view class="item-left-bottom">
+                          <view class="item-left-bottom-tag" wx:for="{{news.news.tags}}" wx:for-item="tag" wx:key="tag-index">
+                            {{tag}}
+                          </view>
+                          <view class="item-left-bottom-comment">
+                            {{news.news.comment_num || 0}} 评论
+                          </view>
+                      </view> -->
+                  </view>
+                  <view class="item-right">
+                      <!-- <image src="{{news.news.cover_img}}" mode="scaleToFill"></image> -->
+                      <!-- <video wx:if="{{news.news.id == playIndex}}" id='video{{news.news.id}}' src='https://apd-f580b9462e6672be35c3823861b42e14.v.smtcdns.com/vhot2.qqvideo.tc.qq.com/A5-leHZlMzKWTSvIdhqxJTmH-dc6nDRAT0236oOQSKDc/p03883viatl.p712.1.mp4?sdtfrom=v1010&guid=24b4fd56c7451d55b03d57c90e1779d6&vkey=764A1598E07AD13828402EF930E26AEC5DAE1BDAABCAE1A432D74D22ABCB9B2066F2DD387736C5E080024FE05D1ADDE58E4EA020D918ABBE66EB1530F66381F0289CB712807C43A2F142166E0C96FE4A09F473BB09935B199749A259A040BE97A2EA22CA1985797BA458790C59DBFCFDC06F04A2C0BF786D' autoplay='{{true}}' show-center-play-btn="{{false}}" controls="true" style='width:100%;height:100%'></video> -->
+                      <image src="{{news.news.cover_img}}" mode="scaleToFill"></image><!--wx:if="{{news.news.id!=playIndex}}"-->
+                      <!-- <image class='video-play-btn' wx:if='{{news.news.id!=playIndex}}' mode='widthFix' data-index='{{news.news.id}}' catchtap='videoPlay' src='../../resources/images/tarbar-live.png'></image> -->
+                  </view>
+                </view>
+                <view class='view-item-bottom'>
+                  <view class='iconfont icon-fenxiang'></view>
+                  <view class='iconfont icon-praise'><text>{{news.news.vote_num||0}}</text></view>
+                  <view class='iconfont icon-message'><text>{{news.news.comment_num||0}}</text></view>
+                </view>
+            </block>
+
+            <!-- 视频下显示 -->
+            <block wx:if="{{news.news.show_type=='VIDEO_BOTTOM'&&news.news.text_type=='video'}}">
+                <view class="view-item-video-bottom">
+                  <view class="item-top">
+                      <text>{{news.news.title}}</text>
+                    </view>
+                    <view class="item-middle">
+                      <view class="item-middle-video">
+                          <image src="{{news.news.cover_img}}" ></image>
+                      </view>
+                    </view>
+                    <!-- <view class="item-bottom">
+                      <view class="item-bottom-tag" wx:for="{{news.news.tags}}" wx:for-item="tag" wx:key="tag-index">
+                        {{tag}}
+                      </view>
+                      <view class="item-bottom-comment">
+                        {{news.news.comment_num || 0}} 评论
+                      </view>
+                    </view> -->
+                </view>
+                <view class='view-item-bottom'>
+                  <view class='iconfont icon-fenxiang'></view>
+                  <view class='iconfont icon-praise'><text>{{news.news.vote_num||0}}</text></view>
+                  <view class='iconfont icon-message'><text>{{news.news.comment_num||0}}</text></view>
+                </view>
+            </block>
+          </view>
+
+</view>
+</view>

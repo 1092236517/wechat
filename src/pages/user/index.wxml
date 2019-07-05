@@ -1,0 +1,35 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- 用户卡片 -->
+  <view class="userinfo">
+      <view class="userinfo-card">
+        <view class="userinfo-avatar">
+            <image src="{{userInfo.photo}}" mode="scaleToFill"></image>
+        </view>
+        <view class="userinfo-nickname">
+          <text>{{userInfo.name}}</text>
+        </view>
+      </view>
+  </view>
+
+  <!-- 快速入口 -->
+  <view class="quick-enter">
+      <view class="quick-enter-item" bindtap="bindQuickEnterTab" data-type="collect">
+          <view class="icon">
+            <image src="../../resources/images/user/icon-collect.png"></image>
+          </view>
+          <view class="text">
+            <text>我的收藏</text>
+          </view>
+      </view>
+
+      <view class="quick-enter-item" bindtap="bindQuickEnterTab" data-type="comment">
+          <view class="icon">
+            <image src="../../resources/images/user/icon-comment.png"></image>
+          </view>
+          <view class="text">
+            <text>我的评论</text>
+          </view>
+      </view>
+  </view>
+</view>

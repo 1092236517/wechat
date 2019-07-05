@@ -1,0 +1,97 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: row;
+  height: 250rpx;
+  width: 96%;
+  padding: 2%;
+}
+
+.userinfo .userinfo-card {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  background-color:red;
+  border-radius: 12rpx;
+  background: -webkit-linear-gradient(left,#f84709,white);
+  background: -o-linear-gradient(left,#f84709,white);
+  background: -moz-linear-gradient(left,#f84709,white);
+  background: -mos-linear-gradient(left,#f84709,white);
+  background: linear-gradient(left,#f84709,white);
+}
+
+.userinfo .userinfo-card .userinfo-avatar {
+  width: 35%;
+  height: 100%;
+  position: relative;
+}
+
+.userinfo .userinfo-card .userinfo-avatar image {
+  height: 150rpx;
+  width: 150rpx;
+  position: absolute;
+  top: 20%;
+  left:20%;
+  border-radius: 100rpx;
+  border: 5rpx solid #ffffff;
+}
+
+.userinfo .userinfo-card .userinfo-nickname {
+  width: 65%;
+  height: 100%;
+  position: relative;
+  color: #ffffff;
+  display: block;
+  overflow: hidden;
+}
+
+.userinfo .userinfo-card .userinfo-nickname text{
+  position: absolute;
+  top: 40%;
+  left:0%;
+}
+
+.quick-enter {
+  display: flex;
+  flex-direction: column;
+  height: 250rpx;
+  width: 96%;
+  padding: 2%; 
+}
+
+.quick-enter .quick-enter-item {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100rpx;
+  border-bottom: 1rpx #eeeeee solid;
+}
+
+.quick-enter .quick-enter-item .icon {
+  height: 100%;
+  width: 10%;
+  position: relative;
+}
+
+.quick-enter .quick-enter-item .icon image {
+  height: 50rpx;
+  width: 50rpx;
+  position: absolute;
+  top: 25%;
+  left:0%;
+}
+
+.quick-enter .quick-enter-item .text {
+  height: 100%;
+  width: 90%;
+  position: relative;
+}
+
+.quick-enter .quick-enter-item .text text{
+  height: 75%;
+  width: 100%;
+  position: absolute;
+  top: 25%;
+  left:0%;
+}

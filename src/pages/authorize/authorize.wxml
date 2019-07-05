@@ -1,0 +1,22 @@
+<view class="container">
+  <view class="authorize">
+   <!-- 头像 -->
+    <view class="authorize-avatar">
+      <image src="../../resources/images/zhuniu-logo.png" mode="scaleToFill" style="height:150rpx;width:150rpx;"></image>
+    </view>
+    <!-- 授权信息 -->
+    <view class="authorize-info">
+        <view class="info-title">
+          筑牛资讯申请获得以下权限：
+        </view>
+        <view class="info-detail">
+          获得你的公开信息(昵称，头像等)
+        </view>
+    </view>
+    <!-- 授权按钮 -->
+    <view class="authorize-btn">
+      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" size='default'> 确认授权获取头像昵称 </button>
+    </view>
+  </view>
+</view>
+

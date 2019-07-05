@@ -1,0 +1,120 @@
+<!--index.wxml-->
+<view class="container">
+  <!--  顶部TabList  -->
+  <scroll-view class="tab-bar" scroll-x="true" style="width: 100%;" scroll-left="{{tab_config.tab_left}}">
+    <view wx:for="{{tab_config.tabs}}" wx:key="index" wx:item="item" data-index="{{index}}" bindtap="handlerTabTap" class="tab {{tab_config.active_tab==index?'tab-active':''}} " style="width: {{tab_config.item_width}}px;">
+      <text>{{item.name}}</text>
+    </view>
+    <view style="width: {{tab_config.item_width-tab_config.underline.margins}}px; left: {{tab_config.underline.offset+10}}px;" class="under-line withAnimate"></view>
+  </scroll-view>
+
+  <!-- 新闻主体 -->
+   <view class="movie-content-wrapper">
+    <!--  滑动页面  -->
+    <swiper current='{{swipe_config.current}}' bindchange='bindChange' style="height: {{ swipe_config.height }}rpx;">
+      <swiper-item wx:for="{{news_list}}" wx:for-item="list" wx:key="list-index">
+        <scroll-view scroll-y="true">
+          <!-- 新闻 -->
+          <block wx:if="{{!showdefaultimg}}">
+          <view class="view-item" wx:for="{{list}}"  wx:for-item="news" wx:key="news-index" bindtap='bindshowdetailTap' data-new='{{news}}'>
+            <!-- 图片右显示 -->
+            <block wx:if="{{news.cover_type=='single'&&news.text_type=='text'}}" style="height:240rpx">
+              <view class="view-item-img-right">
+                <view class="item-left">
+                    <view class="item-left-text">{{news.title}}</view>
+                    <view class="item-left-bottom">
+                        <view class="item-left-bottom-tag" wx:for="{{news.tags}}" wx:for-item="tag" wx:key="tag-index">
+                          {{tag}}
+                        </view>
+                        <view class="item-left-bottom-comment">
+                          {{news.comment_num || 0}} 评论
+                        </view>
+                    </view>
+                </view>
+                <view class="item-right">
+                    <image src="{{news.cover_img}}" mode="scaleToFill"></image>
+                </view>
+              </view>
+            </block>
+
+            <!-- 图片下显示 -->
+            <block wx:if="{{news.cover_type=='multiple'&&news.text_type=='text'}}" style="height:240rpx">
+                <view class="view-item-img-bottom">
+                    <view class="item-top">
+                      <text>{{news.title}}</text>
+                    </view>
+                    <view class="item-middle">
+                      <view class="item-middle-img" wx:for="{{news.cover_img}}" wx:for-item="img" wx:key="img-index">
+                          <image src="{{img}}" mode="scaleToFill"></image>
+                      </view>
+                    </view>
+                    <view class="item-bottom">
+                      <view class="item-bottom-tag" wx:for="{{news.tags}}" wx:for-item="tag" wx:key="tag-index">
+                        {{tag}}
+                      </view>
+                      <view class="item-bottom-comment">
+                        {{news.comment_num || 0}} 评论
+                      </view>
+                    </view>
+                </view>
+            </block>
+
+            <!-- 视频右显示-->
+            <block wx:if="{{news.cover_type=='single'&&news.text_type=='video'}}" style="height:240rpx">
+                <view class="view-item-video-right">
+                  <view class="item-left">
+                      <view class="item-left-text">
+                      {{news.title}}
+                      </view>
+                      <view class="item-left-bottom">
+                          <view class="item-left-bottom-tag" wx:for="{{news.tags}}" wx:for-item="tag" wx:key="tag-index">
+                            {{tag}}
+                          </view>
+                          <view class="item-left-bottom-comment">
+                            {{news.comment_num || 0}} 评论
+                          </view>
+                      </view>
+                  </view>
+                  <view class="item-right">
+                      <!-- <image src="{{news.cover_img}}" mode="scaleToFill"></image> -->
+                      <!-- <video wx:if="{{news.id == playIndex}}" id='video{{news.id}}' src='{{news.video_url}}' autoplay='{{true}}' show-center-play-btn="{{false}}" controls="true" style='width:100%;height:100%'></video> -->
+                      <image src="{{news.cover_img}}" mode="scaleToFill"></image><!--wx:if="{{news.id!=playIndex}}"-->
+                      <!-- <image class='video-play-btn' wx:if='{{news.id!=playIndex}}' mode='widthFix' data-index='{{news.id}}' catchtap='videoPlay' src='../../resources/images/tarbar-live.png'></image> -->
+                  </view>
+                </view>
+            </block>
+
+            <!-- 视频下显示 -->
+            <block wx:if="{{news.cover_type=='multiple'&&news.text_type=='video'}}" style="height:420rpx">
+                <view class="view-item-video-bottom">
+                  <view class="item-top">
+                      <text>{{news.title}}</text>
+                    </view>
+                    <view class="item-middle">
+                      <view class="item-middle-video" wx:for="{{news.cover_img}}" wx:for-item="img" wx:key="img-index">
+                          <image src="{{img}}" mode="scaleToFill"></image>
+                      </view>
+                    </view>
+                    <view class="item-bottom">
+                      <view class="item-bottom-tag" wx:for="{{news.tags}}" wx:for-item="tag" wx:key="tag-index">
+                        {{tag}}
+                      </view>
+                      <view class="item-bottom-comment">
+                        {{news.comment_num || 0}} 评论
+                      </view>
+                    </view>
+                </view>
+            </block>
+          </view>
+          <view hidden='{{!nomoreData}}' style='text-align:center;color:#bbb;'>已加载全部数据......</view>
+          </block>
+          <block wx:else> 
+            <view style='margin:0 auto;height:500rpx;width:70%;box-sizing:border-box;margin-top:200rpx;'>
+              <image src="../../resources/images/nodatabg.png" style='height:100%;width:100%;'></image>
+            </view>
+          </block>
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+  </view>
+</view>
